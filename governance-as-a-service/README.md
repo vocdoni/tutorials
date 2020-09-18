@@ -566,14 +566,11 @@ async function forceEndingProcess() {
 }
 ```
 
-Congratulations 🎉🎊
+Congratulations! You just conducted an election on your own 🎉🎊
 
-You just conducted an election on your own!
+A recap of the the examples featured on the article are available on this repository:
 
-You can find the repository featuring the examples of the article here:
-
-------------- GITHUB LINK ---------------------
-
+[https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service](https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service)
 
 ## Roadmap
 There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. 
