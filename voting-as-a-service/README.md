@@ -125,7 +125,6 @@ $ npm run main
 Creating entity wallet
 Entity address: 0x1048d8cB20fE806389802ba48E2647dc85aB779a
 Entity private key: 0x6d88d78a4a76e42144b6867fdff89477f0a3b805d85b97cd46387a2f770f91f1
-
 ```
 
 So here's our wallet, what's next?
@@ -145,7 +144,6 @@ Into this:
 ```typescript
 // Use your private key here
 const entityWallet = new Wallet("0x6d88d78a4a76e42144b6867fdff89477f0a3b805d85b97cd46387a2f770f91f1")
-
 ```
 
 Obviously, make sure to store any real private key nowhere within the source code or Git in general.
@@ -190,7 +188,6 @@ async function registerEntity() {
     console.log("The entity has been defined")
     console.log(contentUri)
 }
-
 ```
 
 And then:
@@ -538,7 +535,7 @@ If we look at the visualizer or the block explorer we should see votes already s
 
 If the process type was set to `encrypted-poll` then, results would remain unavailable until the process ends. As our process is an open poll, however, we can ask for the results in real time:
 
-```
+```typescript
 import { getResultsDigest } from "dvote-js/dist/api/vote"
 
 async function fetchResults() {
@@ -546,7 +543,6 @@ async function fetchResults() {
 
     console.log("Process results", questions)
 }
-
 ```
 
 After all users have voted, the visualizer shows:
@@ -572,7 +568,6 @@ async function forceEndingProcess() {
     await cancelProcess(processId, entityWallet, pool)
     console.log("Done")
 }
-
 ```
 
 Congratulations! You just conducted an election on your own 🎉🎊
@@ -587,16 +582,17 @@ If you think that Vocdoni's voting infrastructure can be useful to you and would
 
 ## What to expect next
 
-There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. Specially when we'll deploy the [next version of our Vocdoni' voting Smartcontract](gitlab.com/groups/vocdoni/-/epics/72). This version 2.0 will come with more flexibility during the creation of voting processes allowing weighted votes or preferential votes and enabling new ways of participation like Quadratic voting.
+There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. 
 
 Just to name some next developments, this is what 2020 holds in the bag for us:
 
 - Anonymous voting by the use of ZK-Snarks running on modest hardware
-- Process results available on-chain, so that Ethereum smart contracts can perform actions depending on them.
+- [Much more flexible voting processes](https://gitlab.com/groups/vocdoni/-/epics/72)
+    - Quadratic voting, weighted choices, ratings, multiple choices, etc.
 - Vastly improved Process smart contract
-    - Supporting transparent, non-disruptive upgrades
+    - [Supporting transparent, non-disruptive and secure contract upgrades](https://gitlab.com/vocdoni/dvote-solidity/-/issues/17)
     - Process namespaces, allowing to use independent shards for different purposes
-    - A plethora of flags to customize the behavior of each process
+- Process results available on-chain, so that Ethereum smart contracts can perform actions depending on them.
 - Blazing fast crypto computations on mobile devices, by running native Rust code
 
 There are a lot of moving pieces, and we are working on a flexible infrastructure to bring all kinds of governance into existence.
