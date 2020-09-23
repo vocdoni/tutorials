@@ -1,78 +1,70 @@
-# Introducing Governance as a Service
-
-Since the advent of crypto currencies and smart contracts, governance has been the perpetual next thing to come. However, using democracy to trigger binding actions on-chain has been limited to a few small communities where participants have had coins to spend on contract transactions.	
+# Introducing Voting as a Service
+Since the advent of cryptocurrencies and smart contracts, governance has been the perpetual next thing to come. However, using democracy to trigger binding actions on-chain has been limited to a few small communities where participants have had coins to spend on contract transactions.
 
 Today we are pleased to announce that decentralized governance can be a first class citizen within the crypto community. And indeed, it can be for any organization, in general.
 
-Since its inception, it seemed like the cryptospace was the natural entry point for Vocdoni. But the unexpected impact of covid throughout society has turned a long term dream into a must. 
+Since its inception, it seemed like the cryptospace was the natural entry point for Vocdoni. But the unexpected impact of covid throughout society has turned a long term dream into a must.
 
 If gathering thousands to vote on site is forbidden and massive offline voting is not viable, then electronic governance becomes the path to go.
 
 ## What is Vocdoni
+
 The goal of Vocdoni is to provide a mobile-first, open, decentralized, censorship resistant and end-to-end verifiable voting platform that anyone can run from a modest device.
 
-After two years of development, we have just started our early access program with a diverse set of organizations, providing them with a complete solution to manage communities and vote using a smart phone.
+After two years of development, we already provided dozens of organizations with a complete solution to manage communities and vote using a smartphone.
 
-In general, most of them already have their own management infrastructure and that is why we are moving towards a more flexible model, which we call Governance as a Service.
+But some organizations, have their own software stack to manage its organizational life and user base. That's why we want also to offer an alternative to connect our voting infrastructure via API, what we call Voting as a Service.
 
-You bring the community, we bring the governance platform.
+## The voting infrastructure
 
-### A few use cases
-You may already know about [DAO's](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization). But with public gatherings restricted to 10 people in several countries, who else is likely to adopt Governance as a Service in the near future?
-
-- Stakeholders enforced by law to renew the board, validate the year's results and approve the new budget.
-- Cooperatives, political parties, labor unions or civic associations that must elect their delegates and conduct their general assembly.
-- City councils that do participatory budgeting.
-- Education centers that need to vote on their school council.
-- Entities where signatures are being collected for a vote of no confidence.
-
-These organizations don't specifically need blockchain based governance. However, despite the social distancing all of them need secure, auditable and verifiable decision making. And this is where decentralized governance becomes the perfect match.
-
-## The platform
-Conducting secure voting processes is far from simple, and today we are only focusing on the first steps. Vocdoni is conceived as a set of decentralized components which can operate as a whole.
+Conducting secure voting processes is far from simple, and today we are only focusing on the first steps. Vocdoni is conceived as a set of decentralized components which can operate as a whole and can be accessed via the Vocdoni Platform or the API.
 
 - The Ethereum blockchain to declare organizations and their voting processes (Layer 1).
 - Decentralized metadata retrieved via IPFS.
-- The purpose-specific voting blockchain, where votes are validated and registered (Layer 2)
+- Vochain, the purpose-specific voting blockchain, where votes are validated and registered (Layer 2)
 - The public gateways, providing easy access to the decentralized components above.
 - The census registry (the user database to generate the census).
 
-Every single one of these components can be replaced by your own instances without any kind of vendor lock-in.
-
-If your organization already has an existing user database, Vocdoni's Governance as a Service is the best fit.
+Every single one of these components can be replaced by your own instances without any kind of vendor lock-in. 
 
 ## How it works
+
 ### Before the process
+
 In Vocdoni, identities arise from cryptographic key pairs (ECDSA). When people are added to a database, their [public key](https://en.wikipedia.org/wiki/Public-key_cryptography) is registered.
 
 To create a voting process, the first step is to generate a snapshot of the census. The census consists of a [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree) with the [public keys](https://en.wikipedia.org/wiki/Public-key_cryptography) of everyone who is eligible to vote. No personal data is involved.
 
-The census snapshot is then uploaded and pinned to a decentralized storage like [IPFS](https://ipfs.io), which ensures that everyone will be able to check it out.
+The census snapshot is then uploaded and pinned to a decentralized storage like [IPFS](https://ipfs.io/), which ensures that everyone will be able to check it out.
 
 Then the voting process details are declared on the [Ethereum](https://ethereum.org/en/developers/) [smart contract](https://en.wikipedia.org/wiki/Smart_contract), so that anyone with internet access can fetch them, get the metadata, get the location of the census, etc.
 
 ### During the process
+
 Using their private key and a [decentralized Gateway](https://docs.vocdoni.io/#/architecture/components/gateway), eligible voters can fetch a Merkle proof to prove that their key pair belongs to the census [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree). They sign their vote envelope with the key above and submit it using whatever [Gateway](https://github.com/vocdoni/go-dvote#dvotenode) they like. Even their own.
 
-Votes are relayed to the custom voting blockchain, validated and included in the next block.
+Votes are relayed to the custom voting blockchain (Vochain), validated and included in the next block.
 
-As the process goes on, anyone with network access can listen for vote transactions, verify them by themselves or even use the [block explorer](https://explorer.vocdoni.net) to do it manually.
+As the process goes on, anyone with network access can listen for vote transactions, verify them by themselves or even use the [block explorer](https://explorer.vocdoni.net/) to do it manually.
 
 ### After the process
-When the vote is over, the oracle will trigger a process end transaction. At this point, the process will stop accepting valid votes and Gateways will be able to compute the scrutiny of the process. Even your own gateways can. 
+
+When the voting process is over, the oracle will trigger a transaction to end it. At this point, the process will stop accepting valid votes and Gateways will be able to compute the scrutiny of the process. Even your own gateways can.
 
 Optionally, an oracle can read the final results and publish them on the smart contract where the process was created, so that results are notarized on the Ethereum blockchain.
 
 Since the process operates on an L2 sidechain, users don't even need to know about [metamask](https://metamask.io/), exchanges or [gas fees](https://etherscan.io/gastracker). All they do is open an app or a web site and use their keys (under the hood) to sign and submit a vote envelope. The governance infrastructure does the rest.
 
-## Get started
+## Get started with Voting as a Service
+
 Enough talk, let's see how you can create an entity and publish your first voting process.
 
-
 ### Entity creation
-Make sure you have [Node.js](https://nodejs.org) 12 installed on your computer.
+
+Make sure you have [Node.js](https://nodejs.org/) 12 installed on your computer.
 
 In an empty folder, create a `package.json` file by running
+
 ```
 $ npm init -y
 Wrote to /home/user/dev/governance-as-a-service/package.json:
@@ -83,27 +75,31 @@ Wrote to /home/user/dev/governance-as-a-service/package.json:
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \\"Error: no test specified\\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
+
 ```
 
 Next, install the DVoteJS dependency and two dev dependencies to support TypeScript:
+
 ```
 $ npm i dvote-js
 $ npm i -D typescript ts-node
+
 ```
 
 Edit the `scripts` section of `package.json` and leave it like this:
+
 ```
   "scripts": {
     "main": "ts-node index.ts"
   },
-```
 
+```
 
 Then, let's create a file named `index.ts` and create a function to generate the wallet of our new entity:
 
@@ -129,13 +125,14 @@ $ npm run main
 Creating entity wallet
 Entity address: 0x1048d8cB20fE806389802ba48E2647dc85aB779a
 Entity private key: 0x6d88d78a4a76e42144b6867fdff89477f0a3b805d85b97cd46387a2f770f91f1
+
 ```
 
 So here's our wallet, what's next?
 
 In this example, we will be using an Ethereum testnet called Sokol. Write down your private key and and use the address to request some test coins from [the faucet](https://faucet-sokol.herokuapp.com/). You will need them to send some transactions.
 
-![Sokol Faucet](./assets/image-1.png "Sokol faucet")
+![https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-1.png?raw=true](https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-1.png?raw=true)
 
 Now, instead of creating a random wallet, we should use the one that received the test ether. In the lines above, replace this:
 
@@ -148,6 +145,7 @@ Into this:
 ```typescript
 // Use your private key here
 const entityWallet = new Wallet("0x6d88d78a4a76e42144b6867fdff89477f0a3b805d85b97cd46387a2f770f91f1")
+
 ```
 
 Obviously, make sure to store any real private key nowhere within the source code or Git in general.
@@ -181,8 +179,8 @@ async function registerEntity() {
     entityMetadata.name.default = "Vilafourier"
     entityMetadata.description.default = "Official communication and participation channel of the city council"
     entityMetadata.media = {
-        avatar: 'https://my-organization.org/logo.png',
-        header: 'https://my-organization.org/header.jpeg'
+        avatar: '<https://my-organization.org/logo.png>',
+        header: '<https://my-organization.org/header.jpeg>'
     }
     entityMetadata.actions = []
 
@@ -192,6 +190,7 @@ async function registerEntity() {
     console.log("The entity has been defined")
     console.log(contentUri)
 }
+
 ```
 
 And then:
@@ -205,7 +204,7 @@ The entity has been defined
 ipfs://QmdK5TnHDXPt4xozkuboyKP94RTrUxFr1z9Pkv5qhfahFG
 ```
 
-Done! 
+Done!
 
 This is what we just did:
 
@@ -216,7 +215,8 @@ This is what we just did:
 
 The value on the smart contract can only be updated by our wallet, the blockchain ensures the integrity of our data and IPFS ensures its global availability.
 
-#### Visualizer
+### Visualizer
+
 To check that our entity is properly declared, we can check it on the visualizer: `https://app.dev.vocdoni.net/entities/#/<entity-id>`
 
 This is the link [in our case](https://app.dev.vocdoni.net/entities/#/0xdeea56f124dd3e73bcbc210fc382154a11f3bab227af55927139c887e15573e4).
@@ -224,6 +224,7 @@ This is the link [in our case](https://app.dev.vocdoni.net/entities/#/0xdeea56f1
 > Note: Keep in mind that we're using a testnet and some of the data might be eventually disposed.
 
 ### Census generation
+
 Our entity is ready, now it can handle voting processes. But before we can create one, we need a census of the people who can vote.
 
 As we said, digital identities arise from a cryptographic keypair. The ideal scenario is when the identity is generated on the user's device and only the public key is shared, but for the sake of simplicity, we will create a few identities ourselves.
@@ -294,6 +295,7 @@ Census published on ipfs://QmcTuUJbN1tEWA3nqHFU8N8iuUN2ymJoqW4UcKBzHuYrPw
 Cool! Our entity is ready, and our first census is now public.
 
 ### Process creation
+
 Now we are ready to create our fist process. To do so, we will use the values we generated previously and define the topic, the questions, the vote options, etc.
 
 ```typescript
@@ -322,7 +324,7 @@ async function createVotingProcess() {
             "description": {
                 "default": "This is our test poll using a decentralized blockchain to register votes"
             },
-            "headerImage": "https://images.unsplash.com/photo-1600190184658-4c4b088ec92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+            "headerImage": "<https://images.unsplash.com/photo-1600190184658-4c4b088ec92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80>",
             "streamUrl": "",
             "questions": [
                 {
@@ -378,7 +380,7 @@ The metadata is {
     description: {
       default: 'This is our test poll using a decentralized blockchain to register votes'
     },
-    headerImage: 'https://images.unsplash.com/photo-1600190184658-4c4b088ec92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    headerImage: '<https://images.unsplash.com/photo-1600190184658-4c4b088ec92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80>',
     streamUrl: '',
     questions: [ [Object], [Object] ]
   }
@@ -388,38 +390,42 @@ The metadata is {
 So, we just...
 
 - Defined the metadata of our process
-- Defined the  block at which we would like the process to start
+- Defined the block at which we would like the process to start
 - Declare the metadata of the process
 
-As it happened before, the JSON metadata is pinned on IPFS and pointed to from the process smart contract. In addition, some metadata fields are also stored on the smart contract so they can be accessed on-chain. 
+As it happened before, the JSON metadata is pinned on IPFS and pointed to from the process smart contract. In addition, some metadata fields are also stored on the smart contract so they can be accessed on-chain.
 
-> The contract flags define **how** the process will behave, whereas the metadata is used to store the **human readable** content.
+> The contract flags define how the process will behave, whereas the metadata is used to store the human readable content.
 
 In about 2-3 minutes, the Ethereum transaction will be relayed to the voting blockchain as well. When the block number reaches `startBlock`, the process will become open to those who are part of the census. The `startBlock` value should be **at least 25 blocks ahead** of the current value.
 
-#### Visualizer
+### Visualizer
+
 To check the new process, there are two web sites we can use:
+
 - `https://app.dev.vocdoni.net/processes/#/<entity-id>/<process-id>`
 - `https://explorer.dev.vocdoni.net/process/<process-id>`
 
 In our case:
+
 - `https://app.dev.vocdoni.net/processes/#/0xdeea56f124dd3e73bcbc210fc382154a11f3bab227af55927139c887e15573e4/0x82f42dc48bfbfa0bb1018bcb0f3a31f77d12ced1fda9566990d64d07be9a48a6`
 - `https://explorer.dev.vocdoni.net/process/0x82f42dc48bfbfa0bb1018bcb0f3a31f77d12ced1fda9566990d64d07be9a48a6`
 
 Again, this is a testnet and some of this data may have been cleaned up at some point.
 
 ### Voting
+
 The previous code typically runs on the backend of your organization -you will simply choose to generate a census based on your specific organization's parameters.
 
-This next portion, however, is meant to be executed on the voter's device. The specific method used to create and manage user keys is an important decision which  presents a trade off between usability and security.
+This next portion, however, is meant to be executed on the voter's device. The specific method used to create and manage user keys is an important decision which presents a trade off between usability and security.
 
 - Users create the keys on their end
-	- This allows for a self sovereign identity and provides higher privacy
-	- However, users have to register the public key on your backend and you need to validate it
+    - This allows for a self sovereign identity and provides higher privacy
+    - However, users have to register the public key on your backend and you need to validate it
 - The organization creates one-time keys
-	- The keys are not in the user's control
-	- They don't need to register
-	- They can simply receive a link and use it to vote, and then the key expires
+    - The keys are not in the user's control
+    - They don't need to register
+    - They can simply receive a link and use it to vote, and then the key expires
 
 Whatever your case is, we will illustrate a web browser environment where the voter fetches the process metadata, signs his/her choices and submits them to a gateway.
 
@@ -527,11 +533,12 @@ This is what we just did:
 - Retrieve the status of the vote
 
 ### Process results
+
 If we look at the visualizer or the block explorer we should see votes already submitted.
 
 If the process type was set to `encrypted-poll` then, results would remain unavailable until the process ends. As our process is an open poll, however, we can ask for the results in real time:
 
-```typescript
+```
 import { getResultsDigest } from "dvote-js/dist/api/vote"
 
 async function fetchResults() {
@@ -539,11 +546,12 @@ async function fetchResults() {
 
     console.log("Process results", questions)
 }
+
 ```
 
 After all users have voted, the visualizer shows:
 
-![Process results](./assets/image-2.png "Process results")
+![https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-2.png?raw=true](https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-2.png?raw=true)
 
 However, if you can't wait for an encrypted process to end later or you simply want to stop vote submissions, there's a trick you can use. This will change in the near future, but for now you can `cancel` the rest of the lifespan of a process, if needed. The scrutiny will begin a few seconds later.
 
@@ -564,6 +572,7 @@ async function forceEndingProcess() {
     await cancelProcess(processId, entityWallet, pool)
     console.log("Done")
 }
+
 ```
 
 Congratulations! You just conducted an election on your own 🎉🎊
@@ -572,32 +581,42 @@ A recap of the the examples featured on the article are available on this reposi
 
 [https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service](https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service)
 
-## Roadmap
-There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. 
+## Using Voting as a Service
 
-Just to name a few of them, this is what 2020 holds in the bag for us:
+If you think that Vocdoni's voting infrastructure can be useful to you and would like to integrate into your organization, platform or software we will be happy to help you. You can [join us in our Discord Server](https://discord.gg/ZV3Y3VS) and ask in the integrations channel
+
+## What to expect next
+
+There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. Specially when we'll deploy the [next version of our Vocdoni' voting Smartcontract](gitlab.com/groups/vocdoni/-/epics/72). This version 2.0 will come with more flexibility during the creation of voting processes allowing weighted votes or preferential votes and enabling new ways of participation like Quadratic voting.
+
+Just to name some next developments, this is what 2020 holds in the bag for us:
 
 - Anonymous voting by the use of ZK-Snarks running on modest hardware
 - Process results available on-chain, so that Ethereum smart contracts can perform actions depending on them.
 - Vastly improved Process smart contract
-	- Supporting transparent, non-disruptive upgrades
-	- Process namespaces, allowing to use independent shards for different purposes
-	- A plethora of flags to customize the behavior of each process
+    - Supporting transparent, non-disruptive upgrades
+    - Process namespaces, allowing to use independent shards for different purposes
+    - A plethora of flags to customize the behavior of each process
 - Blazing fast crypto computations on mobile devices, by running native Rust code
 
-There are a lot of moving pieces and we are working on a flexible infrastructure to bring all kinds of governance into existence.
+There are a lot of moving pieces, and we are working on a flexible infrastructure to bring all kinds of governance into existence.
 
 We are working on a tokenomics model to incentivize gateway participation, transaction relay and data availability. And we are also evaluating potential ways of submitting self-verifiable optimistic rollup transasctions on Ethereum, so that the process results could be read and verified all on-chain.
 
-In the meantime you are free to start hacking and trying the current version of the platform by yourself. 
+In the meantime you are free to start hacking and trying the current version of the platform by yourself.
 
-### Get involved
-If you are interested, you can also have a look at the mobile apps for [Android](https://play.google.com/store/apps/details?id=org.vocdoni.app) and [iOS](https://apps.apple.com/us/app/vocdoni/id1505234624?l=ca&ls=1) and you can check out the [Vocdoni Manager](https://manager.vocdoni.net) as well.
+### Get **involved!**
 
-To get a better picture of the architecture, you can have a look at the [documentation](https://docs.vocdoni.io/#/) (work in progress) and if you want to contribute, there are many components on [GitLab](https://gitlab.com/vocdoni) where you can help submitting your merge requests. 
+Vocdoni is not just a digital voting infrastructure and a governance platform. It's also a community of people interested in building digital democracy tools. Join us!
 
-If you have some feedback, we are happy to hear from you at [hello@vocdoni.io](mailto:hello@vocdoni.io). 
+💬 [Discord](https://discord.gg/8hkuRfM)
 
-And finally, we are in the 7th funding round on the [GitCoin Grants](https://gitcoin.co/blog/gitcoin-grants-round-7/), so if you want to back our project and help us achieve version 1.0 faster, don't hesitate to check it out.
+📣 [Telegram](https://t.me/vocdoni)
 
-Until next time!
+🦊 [Gitlab repos](https://gitlab.com/vocdoni)
+
+📑 [Open Stack docs](https://vocdoni.io/docs)
+
+💼 [Open positions](https://vocdoni.io/docs/#/about-us/open-positions)
+
+💸 [Donate to Vocdoni](https://gitcoin.co/grants/202/vocdoni-decentralized-anonymous-voting)
