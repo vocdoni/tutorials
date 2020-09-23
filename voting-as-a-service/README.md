@@ -578,8 +578,7 @@ A recap of the the examples featured on the article are available on this reposi
 
 ## Using Voting as a Service
 
-If you think that Vocdoni's voting infrastructure can be useful to you and would like to integrate into your organization, platform or software we will be happy to help you. You can [join us in our Discord Server](https://discord.gg/ZV3Y3VS) and ask in the integrations channel
-
+If you want to integrate to our Voting as a Service platform, get in touch with us and we will be happy to help. [Join us on Discord](https://discord.gg/ZV3Y3VS) and check out the integrations channel.
 ## What to expect next
 
 There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. 
