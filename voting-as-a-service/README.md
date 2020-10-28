@@ -1,4 +1,4 @@
-# Introducing Voting as a Service
+# Introducing Voting API
 Since the advent of cryptocurrencies and smart contracts, governance has been the perpetual next thing to come. However, using democracy to trigger binding actions on-chain has been limited to a few small communities where participants have had coins to spend on contract transactions.
 
 Today we are pleased to announce that decentralized governance can be a first class citizen within the crypto community. And indeed, it can be for any organization, in general.
@@ -13,7 +13,7 @@ The goal of Vocdoni is to provide a mobile-first, open, decentralized, censorshi
 
 After two years of development, we already provided dozens of organizations with a complete solution to manage communities and vote using a smartphone.
 
-But some organizations, have their own software stack to manage its organizational life and user base. That's why we want also to offer an alternative to connect our voting infrastructure via API, what we call Voting as a Service.
+But some organizations, have their own software stack to manage its organizational life and user base. That's why we want also to offer an alternative to connect our voting infrastructure via API, in a way that we call "Voting as a Service".
 
 ## The voting infrastructure
 
@@ -55,7 +55,7 @@ Optionally, an oracle can read the final results and publish them on the smart c
 
 Since the process operates on an L2 sidechain, users don't even need to know about [metamask](https://metamask.io/), exchanges or [gas fees](https://etherscan.io/gastracker). All they do is open an app or a web site and use their keys (under the hood) to sign and submit a vote envelope. The governance infrastructure does the rest.
 
-## Get started with Voting as a Service
+## Get started with Voting API
 
 Enough talk, let's see how you can create an entity and publish your first voting process.
 
@@ -576,9 +576,9 @@ A recap of the the examples featured on the article are available on this reposi
 
 [https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service](https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service)
 
-## Using Voting as a Service
+## Using Voting API
 
-If you want to integrate to our Voting as a Service platform, get in touch with us and we will be happy to help. [Join us on Discord](https://discord.gg/ZV3Y3VS) and check out the integrations channel.
+If you want to integrate Voting Open Stack, get in touch with us and we will be happy to help. [Join us on Discord](https://discord.gg/ZV3Y3VS) and check out the integrations channel.
 ## What to expect next
 
 There are a lot of improvements on the pipeline, and most of the examples you saw may vary as we enter the public release by the end of the year. 
