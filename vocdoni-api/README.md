@@ -67,10 +67,10 @@ In an empty folder, create a `package.json` file by running
 
 ```
 $ npm init -y
-Wrote to /home/user/dev/governance-as-a-service/package.json:
+Wrote to /home/user/dev/vocdoni-api/package.json:
 
 {
-  "name": "governance-as-a-service",
+  "name": "vocdoni-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -131,7 +131,7 @@ So here's our wallet, what's next?
 
 In this example, we will be using an Ethereum testnet called Sokol. Write down your private key and and use the address to request some test coins from [the faucet](https://faucet-sokol.herokuapp.com/). You will need them to send some transactions.
 
-![https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-1.png?raw=true](https://github.com/vocdoni/tutorials/blob/master/voting-as-a-service/assets/image-1.png?raw=true)
+![https://github.com/vocdoni/tutorials/blob/master/vocdoni-api/assets/image-1.png?raw=true](https://github.com/vocdoni/tutorials/blob/master/vocdoni-api/assets/image-1.png?raw=true)
 
 Now, instead of creating a random wallet, we should use the one that received the test ether. In the lines above, replace this:
 
@@ -574,7 +574,7 @@ Congratulations! You just conducted an election on your own 🎉🎊
 
 A recap of the the examples featured on the article are available on this repository:
 
-[https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service](https://github.com/vocdoni/tutorials/tree/master/governance-as-a-service)
+[https://github.com/vocdoni/tutorials/tree/master/vocdoni-api](https://github.com/vocdoni/tutorials/tree/master/vocdoni-api)
 
 ## Using Voting API
 
